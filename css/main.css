@@ -2,3 +2,45 @@ body {
     background-image: url('../assets/images/Beautiful-Space.jpg');
     background-position: center;
 }
+
+h1 {
+    font-family: 'Righteous', cursive;
+}
+
+.container {
+    width: 65%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #65737e;
+    padding: 4%;
+}
+
+.container img {
+    max-width: 250px;
+    padding: 4%;
+}
+
+#elementos {
+    padding: 2%;
+}
+
+#elementos .elemento {
+    margin: 10%;
+    border: 2px solid #c0c5ce;
+    display: block;
+    padding: 10%;
+    text-align: left;
+    position: relative;
+    margin: 2%;
+}
+
+#elementos .elemento a {
+    font-family: 'Righteous', cursive;
+    display: inline-block;
+    padding: 20%;
+    position: absolute;
+    top: 30%;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
