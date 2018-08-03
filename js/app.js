@@ -1,45 +1,45 @@
-$(document).ready(function(){
-	// var dibujarPokes = function(data){
-	// 		var name = "";
-	// 		var url = "";
-	// 		data.forEach(function(element) {
-	// 				name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
-	// 				url = $("<a>").attr("id", pokemon.name).attr("href", "#").append($("<strong>").text(name));
-	// 			$('#elementos').append(armarTemplate(name,url));
-	// 		});
-		$("#search-poke").click(function(event){
+$(document).ready(function () {
+	var dibujarPokes = function (data) {
+		console.log(data);
+		
+		// data.forEach(function (pokemon) {
+			var name = data.name;
+			var img = data.sprites.front_shiny;
+			$('#elementos').append(armarTemplate(name, img));			
+		// });
+	}
+	$("#search-poke").click(function (event) {
 			event.preventDefault();
 			console.log("entro");
 			$('#elementos').empty();
-			var gif = $('#poke-text').val();
-			console.log(gif);
-			ajaxPoke();
-		});
-		var ajaxPoke = function(poke){
-			$.ajax({
-				url: 'https://pokeapi.co/api/v2/pokemon/',
-				type: 'GET',
-				datatype: 'json',
-		})
-
-		.done(function(response){
-				var data = response;
-				console.log(response);
-				dibujarPokes(response);               
-		})
-
-		.fail(function(){
-				console.log(error);        
-		});
-	};
+			var poke = $('#poke-text').val();
+			console.log(poke);
+			ajaxPoke(poke);
 	});
 
-
-	// var armarTemplate = function(name,url){
-	// 		var t = "<div class='elemento'><img src='" + name +"'/><a href='" + url + "'>Ver más </a></div>"
-	// 		return t;
-	// };
-
+	var armarTemplate = function (name, img) {
+		var t = `<div class="col-lg-offset-3 col-lg-6">
+		<img src="${img}" alt="">
+		<p>${name}</p>
+	</div>`
+			return t;
+	};
+		
+	var ajaxPoke = function (poke) {
+			$.ajax({
+				url: 'https://pokeapi.co/api/v2/pokemon/'+poke,
+				type: 'GET',
+				datatype: 'json',
+			}).done(function (response) {
+					var data = response;
+					console.log(response);
+					dibujarPokes(response);
+			}).fail(function () {
+					console.log(error);
+			});
+	};
+		
+})
 	// var ajaxPoke = function(poke){
 	// 	$.ajax({
     //         url: 'https://pokeapi.co/api/v2/pokemon/',
@@ -78,6 +78,3 @@ $(document).ready(function(){
 // 			ajaxPoke(name);
 			
 // 	})
-
-
-// });
