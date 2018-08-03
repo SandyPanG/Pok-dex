@@ -10,15 +10,17 @@ $(document).ready(function () {
 	}
 	$("#search-poke").click(function (event) {
 			event.preventDefault();
-			console.log("entro");
+			// console.log("entro");
 			$('#elementos').empty();
 			var poke = $('#poke-text').val();
-			console.log(poke);
+					   $('#poke-text').val("");//limpia el valor de la caja de texto
+			$('#elementos').empty("");// limpia contenedor html        	
+			// // console.log(poke);
 			ajaxPoke(poke);
 	});
 
 	var armarTemplate = function (name, img) {
-		var t = `<div class="col-lg-offset-3 col-lg-6">
+		var t = `<div class="pok col-lg-offset-3 col-lg-6">
 		<img src="${img}" alt="">
 		<p>${name}</p>
 	</div>`
